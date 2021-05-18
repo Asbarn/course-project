@@ -1,75 +1,87 @@
 "use strict";
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+//require('@tensorflow/tfjs-node'); 
 var tf = require("@tensorflow/tfjs");
 
-var inputShape = 10;
+var inputShape = 100000;
 
-var fs = require('fs');
+var fs = require("fs");
 
-try {
-  var dataR = fs.readFileSync('./BD/arcs/rgb/arc1r.txt', 'utf8').slice(0, inputShape);
-  var dataG = fs.readFileSync('./BD/arcs/rgb/arc1g.txt', 'utf8').slice(0, inputShape);
-  var dataB = fs.readFileSync('./BD/arcs/rgb/arc1b.txt', 'utf8').slice(0, inputShape);
-  var data = Number.parseInt(dataR + dataG + dataB); // console.log(data.length)
+var arcData = require("./arcData");
 
-  var dataRB = fs.readFileSync('./BD/bands/rgb/bands1r.txt', 'utf8').slice(0, inputShape);
-  var dataGB = fs.readFileSync('./BD/bands/rgb/bands1g.txt', 'utf8').slice(0, inputShape);
-  var dataBB = fs.readFileSync('./BD/bands/rgb/bands1b.txt', 'utf8').slice(0, inputShape);
-  var dataBa = Number.parseInt(dataRB + dataGB + dataBB); // console.log(dataBa.length)
+var bandsData = require("./bandsData");
 
-  var dataRC = fs.readFileSync('./BD/corona/rgb/corona1r.txt', 'utf8').slice(0, inputShape);
-  var dataGC = fs.readFileSync('./BD/corona/rgb/corona1g.txt', 'utf8').slice(0, inputShape);
-  var dataBC = fs.readFileSync('./BD/corona/rgb/corona1b.txt', 'utf8').slice(0, inputShape);
-  var dataC = Number.parseInt(dataRC + dataGC + dataBC); //console.log(typeof dataC)
+var coronaData = require("./coronaData");
 
-  var dataModel = tf.tensor([data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC, data, dataBa, dataC]); //dataModel.print()
-  // dataModel.flatten();
+var diffuseData = require("./diffuseData");
 
-  var labels = tf.tensor(['arcs', 'bands', 'corona']); //diffuse,rays
+var raysData = require("./raysData");
 
-  console.log(dataModel.shape);
-  var model = tf.sequential({
-    layers: [tf.layers.dense({
-      inputShape: [784],
-      units: 32,
-      activation: 'relu'
-    }), tf.layers.dense({
-      units: 32,
-      activation: 'relu'
-    }), tf.layers.dense({
-      units: 32,
-      activation: 'relu'
-    }), tf.layers.dense({
-      units: 32,
-      activation: 'relu'
-    }), tf.layers.dense({
-      units: 32,
-      activation: 'relu'
-    }), tf.layers.dense({
-      units: 32,
-      activation: 'relu'
-    }), tf.layers.dense({
-      units: 10,
-      activation: 'softmax'
-    })]
-  });
-  model.compile({
-    optimizer: 'sgd',
-    loss: 'categoricalCrossentropy',
-    metrics: ['accuracy']
-  });
-  var data1 = tf.randomNormal([100, 784]);
-  var labels1 = tf.randomUniform([100, 10]);
-  console.log(data1.toInt());
-  console.log(dataModel.toInt()); // labels1.flatten().print();
-
-  labels1.print();
-  model.fit(data1, labels1, {
-    epochs: 10,
-    batchSize: 32
-  }).then(function (info) {
-    console.log('Точность обученной модели:', info.history.acc);
-  });
-} catch (err) {
-  console.error(err);
+function onBatchEnd(batch, logs) {
+  console.log("Logs", logs);
+  console.log("Accuracy", logs.acc);
 }
+
+var dataModel = tf.tensor([].concat(_toConsumableArray(arcData.arcData), _toConsumableArray(bandsData.bandsData), _toConsumableArray(coronaData.coronaData), _toConsumableArray(diffuseData.diffuseData), _toConsumableArray(raysData.raysData))); // const labels = tf.tensor([["arcs"], ["bands"], ["corona"]]); //diffuse,rays
+
+var labels = tf.tensor([[0], [0], [0], [0], [0], [0], [0], [0], [0], [0], [1], [1], [1], [1], [1], [1], [1], [2], [2], [2], [2], [2], [3], [3], [3], [3], [3], [3], [3], [3], [3], [3], [3], [3], [3], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4], [4]]);
+var model = tf.sequential({
+  layers: [tf.layers.dense({
+    inputShape: [3 * inputShape],
+    units: 512,
+    activation: "hardSigmoid"
+  }), tf.layers.dense({
+    units: 256,
+    activation: "hardSigmoid"
+  }), tf.layers.dense({
+    units: 256,
+    activation: "hardSigmoid"
+  }), tf.layers.dense({
+    units: 128,
+    activation: "hardSigmoid"
+  }), tf.layers.dense({
+    units: 128,
+    activation: "hardSigmoid"
+  }), tf.layers.dense({
+    units: 128,
+    activation: "tanh"
+  }), tf.layers.dense({
+    units: 128,
+    activation: "tanh"
+  }), tf.layers.dense({
+    units: 128,
+    activation: "tanh"
+  }), tf.layers.dense({
+    units: 128,
+    activation: "tanh"
+  }), tf.layers.dense({
+    units: 5,
+    activation: "softmax" //softmax
+
+  })]
+});
+model.compile({
+  optimizer: "sgd",
+  //adadelta=0.3333333432674408;
+  loss: "sparseCategoricalCrossentropy",
+  //sparseCategoricalCrossentropy,meanSquaredError
+  metrics: ["accuracy"]
+});
+model.fit(dataModel, labels, {
+  epochs: 20,
+  batchSize: 64,
+  // callbacks: {onBatchEnd},
+  shuffle: true
+}).then(function (info) {
+  console.log("Точность обученной модели:", info.history.acc);
+  var prediction = model.predict(tf.tensor([arcData.arcData[0]]));
+  prediction.print();
+});

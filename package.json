@@ -9,7 +9,7 @@
     },
     "dependencies": {
         "@tensorflow/tfjs": "1.2.10",
-        "@tensorflow/tfjs-vis": "1.2.0",
+        "@tensorflow/tfjs-vis": "^1.5.1",
         "plotly.js-dist": "1.49.5"
     },
     "devDependencies": {

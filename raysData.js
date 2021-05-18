@@ -1,0 +1,262 @@
+const inputShape = 100000;
+const fs = require("fs");
+
+try {
+    let dataR = fs
+        .readFileSync("./BD/rays/rgb/rays1r.txt", "utf8")
+        .slice(0, inputShape);
+    let dataG = fs
+        .readFileSync("./BD/rays/rgb/rays1g.txt", "utf8")
+        .slice(0, inputShape);
+    let dataB = fs
+        .readFileSync("./BD/rays/rgb/rays1b.txt", "utf8")
+        .slice(0, inputShape);
+    const data1 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays2r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays2g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays2b.txt", "utf8")
+        .slice(0, inputShape);
+    const data2 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays3r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays3g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays3b.txt", "utf8")
+        .slice(0, inputShape);
+    const data3 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays4r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays4g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays4b.txt", "utf8")
+        .slice(0, inputShape);
+    const data4 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays5r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays5g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays5b.txt", "utf8")
+        .slice(0, inputShape);
+    const data5 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays6r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays6g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays6b.txt", "utf8")
+        .slice(0, inputShape);
+    const data6 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays7r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays7g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays7b.txt", "utf8")
+        .slice(0, inputShape);
+    const data7 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays8r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays8g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays8b.txt", "utf8")
+        .slice(0, inputShape);
+    const data8 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays9r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays9g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays9b.txt", "utf8")
+        .slice(0, inputShape);
+    const data9 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays10r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays10g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays10b.txt", "utf8")
+        .slice(0, inputShape);
+    const data10 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays11r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays11g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays11b.txt", "utf8")
+        .slice(0, inputShape);
+    const data11 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays12r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays12g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays12b.txt", "utf8")
+        .slice(0, inputShape);
+    const data12 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays13r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays13g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays13b.txt", "utf8")
+        .slice(0, inputShape);
+    const data13 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays14r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays14g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays14b.txt", "utf8")
+        .slice(0, inputShape);
+    const data14 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays15r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays15g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays15b.txt", "utf8")
+        .slice(0, inputShape);
+    const data15 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays16r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays16g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays16b.txt", "utf8")
+        .slice(0, inputShape);
+    const data16 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays17r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays17g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays17b.txt", "utf8")
+        .slice(0, inputShape);
+    const data17 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays18r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays18g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays18b.txt", "utf8")
+        .slice(0, inputShape);
+    const data18 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays19r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays19g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays19b.txt", "utf8")
+        .slice(0, inputShape);
+    const data19 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays20r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays20g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays20b.txt", "utf8")
+        .slice(0, inputShape);
+    const data20 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays21r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays21g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays21b.txt", "utf8")
+        .slice(0, inputShape);
+    const data21 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays22r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays22g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays22b.txt", "utf8")
+        .slice(0, inputShape);
+    const data22 = (dataR + dataG + dataB).split("").map(Number);
+
+    dataR = fs
+        .readFileSync("./BD/rays/rgb/rays23r.txt", "utf8")
+        .slice(0, inputShape);
+    dataG = fs
+        .readFileSync("./BD/rays/rgb/rays23g.txt", "utf8")
+        .slice(0, inputShape);
+    dataB = fs
+        .readFileSync("./BD/rays/rgb/rays23b.txt", "utf8")
+        .slice(0, inputShape);
+    const data23 = (dataR + dataG + dataB).split("").map(Number);
+
+    const raysData = [data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, data13, data14, data15, data16, data17, data18, data19, data20, data21, data22, data23];
+    exports.raysData = raysData;
+} catch (err) {
+    console.error(err);
+}
